@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="httpApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="exchange.js"></script>
+</head>
+<body>
+<h2>Http Exchange</h2>
+<div ng-controller="HttpController as httpExchange">
+    <form ng-submit="httpExchange.exchange()">
+        <input type="text" ng-model="httpExchange.method"  size="30"
+               placeholder="method"> <br/>
+        <input type="text" ng-model="httpExchange.path"  size="30"
+               placeholder="path"> <br/>
+        <input type="text" ng-model="httpExchange.body"  size="30"
+               placeholder="body"> <br/>
+
+        <input class="btn-primary" type="submit" value="Send">
+    </form>
+    <pre>{{httpExchange.response | json}}</pre>
+    <pre>Status: {{httpExchange.status}}</pre>
+    <pre>Headers: {{httpExchange.headers}}</pre>
+</div>
+</body>
+</html>
