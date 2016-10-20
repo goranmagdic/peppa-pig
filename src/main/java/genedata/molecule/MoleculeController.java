@@ -1,10 +1,8 @@
 package genedata.molecule;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -22,8 +20,6 @@ public class MoleculeController {
         return moleculeRepository.findAll();
     }
 
-
-
     @RequestMapping(path = "molecules/{id}", method = GET)
     public Molecule get(
             @PathVariable Long id
@@ -36,6 +32,7 @@ public class MoleculeController {
     }
 
     @RequestMapping(path = "molecules", method = POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public Molecule add(@RequestBody Molecule molecule) {
         return moleculeRepository.save(molecule);
     }

@@ -19,7 +19,6 @@ public class GlobalAdvice {
         return map("message", e.getMessage());
     }
 
-
     @ExceptionHandler({EntityNotFoundException.class, EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handle(Exception e){
